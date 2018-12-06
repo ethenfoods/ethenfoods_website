@@ -1,4 +1,5 @@
 ﻿using ethenfoods.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ethenfoods.Data
 {
-    public class EthenFoodsDbContext : IdentityDbContext<TUser>
+    public class EthenFoodsDbContext : IdentityDbContext<IdentityUser>
     {
         public EthenFoodsDbContext(DbContextOptions<EthenFoodsDbContext> option) : base(option)
         {

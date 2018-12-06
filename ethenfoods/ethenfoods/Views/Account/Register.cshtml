@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h2>Register</h2>
+
+<form method="post">
+    <div asp-validation-summary="All"></div>
+
+    <div>
+        <label asp-for="FirstName"></label>
+        <input type="text" asp-for="FirstName" required />
+    </div>
+
+    <div>
+        <label asp-for="LastName"></label>
+        <input type="text" asp-for="LastName" required />
+    </div>
+
+    <div>
+        <label asp-for="CompanyName"></label>
+        <input type="text" asp-for="CompanyName" required />
+    </div>
+
+    <div>
+        <label asp-for="Email"></label>
+        <input type="email" asp-for="Email" required />
+    </div>
+
+    <div>
+        <label asp-for="CompanyAddress"></label>
+        <input type="text" asp-for="CompanyAddress" />
+    </div>
+
+    <div>
+        <label asp-for="City"></label>
+        <input type="text" asp-for="City" />
+    </div>
+
+    <div>
+        <label asp-for="State"></label>
+        <input type="text" asp-for="State" />
+    </div>
+
+    <div>
+        <label asp-for="Zipcode"
+    </div>
+
+</form>

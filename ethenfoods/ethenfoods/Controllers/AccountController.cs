@@ -14,10 +14,10 @@ namespace ethenfoods.Controllers
     public class AccountController : Controller
     {
 
-        private UserManager<TUser> _userManager;
-        private SignInManager<TUser> _signinManager;
+        private UserManager<IdentityUser> _userManager;
+        private SignInManager<IdentityUser> _signinManager;
 
-        public AccountController(UserManager<TUser> userManager, SignInManager<TUser> signinManager)
+        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signinManager)
         {
             _userManager = userManager;
             _signinManager = signinManager;
@@ -32,6 +32,7 @@ namespace ethenfoods.Controllers
 
     
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel lvm)
         {

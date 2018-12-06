@@ -34,6 +34,7 @@ namespace ethenfoods.Models.ViewModel
         public string State { get; set; }
 
         [Display(Name = "Zip Code")]
+        [StringLength(5, MinimumLength = 0)]
         public int ZipCode { get; set; }
 
         [Display(Name = "Phone Number")]
