@@ -12,5 +12,21 @@ namespace ethenfoods.Controllers
         {
             return View();
         }
+
+        public IActionResult Dashboard()
+        {
+            return View();
+        }
+
+        public IActionResult ProductPage()
+        {
+            return View();
+        }
+
+        public IActionResult UserPage()
+        {
+            return View();
+        }
+
     }
 }
