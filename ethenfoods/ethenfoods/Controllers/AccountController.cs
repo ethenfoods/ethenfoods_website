@@ -14,10 +14,10 @@ namespace ethenfoods.Controllers
     public class AccountController : Controller
     {
 
-        private UserManager<ApplicationUser> _userManager;
-        private SignInManager<ApplicationUser> _signinManager;
+        private UserManager<TUser> _userManager;
+        private SignInManager<TUser> _signinManager;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signinManager)
+        public AccountController(UserManager<TUser> userManager, SignInManager<TUser> signinManager)
         {
             _userManager = userManager;
             _signinManager = signinManager;
@@ -79,7 +79,7 @@ namespace ethenfoods.Controllers
         {
             if (ModelState.IsValid)
             {
-                ApplicationUser user = new ApplicationUser
+                TUser user = new TUser
                 {
                     FirstName = rvm.FirstName,
                     LastName = rvm.LastName,

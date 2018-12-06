@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace ethenfoods.Models
 {
-    public class ApplicationUser : IdentityUser
+    public class TUser : IdentityUser
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
