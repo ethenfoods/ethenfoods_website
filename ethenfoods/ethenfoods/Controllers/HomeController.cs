@@ -33,6 +33,7 @@ namespace ethenfoods.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         public IActionResult Privacy()
         {
             return View();

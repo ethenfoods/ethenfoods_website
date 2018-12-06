@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace ethenfoods.Data
 {
-    public class UserDbContext : IdentityDbContext<TUser>
+    public class EthenFoodsDbContext : IdentityDbContext<TUser>
     {
-        public UserDbContext(DbContextOptions<UserDbContext> option) : base(option)
+        public EthenFoodsDbContext(DbContextOptions<EthenFoodsDbContext> option) : base(option)
         {
 
         }

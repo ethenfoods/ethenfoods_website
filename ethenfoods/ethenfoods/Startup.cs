@@ -26,7 +26,7 @@ namespace ethenfoods
             Configuration = builder.Build();
         }
 
-        public IConfiguration Configuration { get; }
+        public IConfiguration Configuration;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -39,12 +39,12 @@ namespace ethenfoods
             });
 
             // Setup Database
-            services.AddDbContext<UserDbContext>(options => 
-                options.UseSqlServer(Configuration.GetConnectionString("UserLocalDb")));
+            services.AddDbContext<EthenFoodsDbContext>(options => 
+                options.UseSqlServer(Configuration.GetConnectionString("EthenFoodsDbContext")));
 
             // Add Identity to the application
             services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<UserDbContext>()
+                .AddEntityFrameworkStores<EthenFoodsDbContext>()
                 .AddDefaultTokenProviders();
 
             // Identity Account Settings
