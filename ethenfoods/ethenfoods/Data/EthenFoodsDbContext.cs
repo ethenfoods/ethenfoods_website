@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ethenfoods.Data
 {
-    public class EthenFoodsDbContext : IdentityDbContext<IdentityUser>
+    public class EthenFoodsDbContext : IdentityDbContext<ApplicationUser>
     {
         public EthenFoodsDbContext(DbContextOptions<EthenFoodsDbContext> option) : base(option)
         {

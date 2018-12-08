@@ -1,4 +1,5 @@
-﻿
+﻿@model RegisterViewModel
+
 @{
     ViewData["Title"] = "Register";
 }
@@ -24,11 +25,6 @@
     </div>
 
     <div>
-        <label asp-for="Email"></label>
-        <input type="email" asp-for="Email" required />
-    </div>
-
-    <div>
         <label asp-for="CompanyAddress"></label>
         <input type="text" asp-for="CompanyAddress" />
     </div>
@@ -38,13 +34,31 @@
         <input type="text" asp-for="City" />
     </div>
 
-    <div>
+   <div>
         <label asp-for="State"></label>
         <input type="text" asp-for="State" />
     </div>
 
+    @*<div>
+        <label asp-for="ZipCode"></label>
+        <input type="number" asp-for="ZipCode" />
+    </div>*@
+
     <div>
-        <label asp-for="Zipcode"
+        <label asp-for="Email"></label>
+        <input type="email" asp-for="Email" required />
     </div>
+
+    <div>
+        <label asp-for="Password"></label>
+        <input type="password" asp-for="Password" required />
+    </div>
+
+    <div>
+        <label asp-for="ConfirmPassword" ></label>
+        <input type="password" asp-for="ConfirmPassword" required />
+    </div>
+
+    <button type="submit"> Register </button>
 
 </form>

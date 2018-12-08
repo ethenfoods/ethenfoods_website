@@ -14,10 +14,10 @@ namespace ethenfoods.Controllers
     public class AccountController : Controller
     {
 
-        private UserManager<IdentityUser> _userManager;
-        private SignInManager<IdentityUser> _signinManager;
+        private UserManager<ApplicationUser> _userManager;
+        private SignInManager<ApplicationUser> _signinManager;
 
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signinManager)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signinManager)
         {
             _userManager = userManager;
             _signinManager = signinManager;
@@ -78,19 +78,23 @@ namespace ethenfoods.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel rvm)
         {
+            //if (rvm.ZipCode == null)
+            //{
+            //    rvm.ZipCode = 0;
+            //}
             if (ModelState.IsValid)
             {
-                TUser user = new TUser
+                ApplicationUser user = new ApplicationUser
                 {
+                    UserName = rvm.Email,
                     FirstName = rvm.FirstName,
                     LastName = rvm.LastName,
                     Email = rvm.Email,
                     CompanyName = rvm.CompanyName,
-                    PhoneNumber = rvm.PhoneNumber,
                     CompanyAddress = rvm.CompanyAddress,
                     City = rvm.City,
                     State = rvm.State,
-                    ZipCode = rvm.ZipCode
+                    //ZipCode = rvm.ZipCode
                 };
 
                 var result = await _userManager.CreateAsync(user, rvm.Password);

@@ -47,7 +47,8 @@ namespace ethenfoods.Migrations
                     CompanyAddress = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: true),
                     State = table.Column<string>(nullable: true),
-                    ZipCode = table.Column<int>(nullable: false)
+                    ZipCode = table.Column<int>(nullable: false),
+                    MemberSince = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {

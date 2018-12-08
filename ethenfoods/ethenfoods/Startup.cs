@@ -44,7 +44,7 @@ namespace ethenfoods
                 options.UseSqlServer(Configuration.GetConnectionString("EthenFoodsDbContext")));
 
             // Add Identity to the application
-            services.AddIdentity<IdentityUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<EthenFoodsDbContext>()
                 .AddDefaultTokenProviders();
 
@@ -55,6 +55,7 @@ namespace ethenfoods
                 options.Password.RequireDigit = false;
                 options.Password.RequireLowercase = false;
                 options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
                 options.Password.RequiredLength = 6;
                 options.Password.RequiredUniqueChars = 0;
 

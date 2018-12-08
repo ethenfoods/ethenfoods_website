@@ -19,32 +19,7 @@ namespace ethenfoods.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ethenfoods.Models.Product", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description");
-
-                    b.Property<string>("Image");
-
-                    b.Property<int>("Name");
-
-                    b.Property<float>("Price");
-
-                    b.Property<int>("ProductCategory");
-
-                    b.Property<int>("Quantity");
-
-                    b.Property<string>("SKU");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("ethenfoods.Models.TUser", b =>
+            modelBuilder.Entity("ethenfoods.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -72,6 +47,8 @@ namespace ethenfoods.Migrations
                     b.Property<bool>("LockoutEnabled");
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
+
+                    b.Property<DateTime>("MemberSince");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256);
@@ -107,6 +84,31 @@ namespace ethenfoods.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("ethenfoods.Models.Product", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Image");
+
+                    b.Property<int>("Name");
+
+                    b.Property<float>("Price");
+
+                    b.Property<int>("ProductCategory");
+
+                    b.Property<int>("Quantity");
+
+                    b.Property<string>("SKU");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -229,7 +231,7 @@ namespace ethenfoods.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("ethenfoods.Models.TUser")
+                    b.HasOne("ethenfoods.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -237,7 +239,7 @@ namespace ethenfoods.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("ethenfoods.Models.TUser")
+                    b.HasOne("ethenfoods.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -250,7 +252,7 @@ namespace ethenfoods.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("ethenfoods.Models.TUser")
+                    b.HasOne("ethenfoods.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -258,7 +260,7 @@ namespace ethenfoods.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("ethenfoods.Models.TUser")
+                    b.HasOne("ethenfoods.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);

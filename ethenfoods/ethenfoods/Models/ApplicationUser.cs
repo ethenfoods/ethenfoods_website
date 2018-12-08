@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace ethenfoods.Models
 {
-    public class TUser : IdentityUser
+    public class ApplicationUser : IdentityUser
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -20,9 +20,7 @@ namespace ethenfoods.Models
         public string City { get; set; }
         public string State { get; set; }
         public int ZipCode { get; set; }
-
-
-
+        public DateTime MemberSince { get; set; }
 
     }
 
