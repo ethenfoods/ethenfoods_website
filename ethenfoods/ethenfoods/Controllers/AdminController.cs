@@ -34,12 +34,6 @@ namespace ethenfoods.Controllers
             return View(plvm);
         }
 
-        public async Task<IActionResult> ProductDetail(int id)
-        {
-            var product = await _product.GetById(id);
-            return View(product);
-        }
-
         [HttpGet]
         public IActionResult ProductCreate()
         {
@@ -86,14 +80,11 @@ namespace ethenfoods.Controllers
             }
         }
 
-        //public async Task<IActionResult> ProductRemove(int id)
-        //{
-        //    var result = _product.Remove(id);
-        //    if (result == "complete")
-        //    {
-        //        return RedirectToAction()
-        //    }
-        //}
+        public async Task<IActionResult> ProductRemove(int id)
+        {
+            string result = await _product.Remove(id);
+            return RedirectToAction("ProductList");
+        }
 
         public IActionResult UserList()
         {
