@@ -94,7 +94,7 @@ namespace ethenfoods.Controllers
                     CompanyAddress = rvm.CompanyAddress,
                     City = rvm.City,
                     State = rvm.State,
-                    //ZipCode = rvm.ZipCode
+                    MemberSince = DateTime.Now
                 };
 
                 var result = await _userManager.CreateAsync(user, rvm.Password);

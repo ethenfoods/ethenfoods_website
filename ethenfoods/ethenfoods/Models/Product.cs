@@ -10,15 +10,15 @@ namespace ethenfoods.Models
     {
         public int ID { get; set; }
         public string SKU { get; set; }
-        public int Name { get; set; }
+        public string Name { get; set; }
         public float Price { get; set; }
         public int Quantity { get; set; }
         public string Description { get; set; }
 
-        [Display(Name = "Product Image URL")]
+        [Display(Name = "Image")]
         public string Image { get; set; }
 
-        [Display(Name = "Product Category")]
+        [Display(Name = "Category")]
         public Category ProductCategory { get; set; }
     }
 
