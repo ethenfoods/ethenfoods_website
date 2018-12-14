@@ -20,6 +20,12 @@ namespace ethenfoods.Models
 
         [Display(Name = "Category")]
         public Category ProductCategory { get; set; }
+
+        [Display(Name = "Bags/Bottles per Case")]
+        public int PerCase { get; set; }
+
+        [Display(Name = "Size per Box")]
+        public int PerBox { get; set; }
     }
 
     public enum Category

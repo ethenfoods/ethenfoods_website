@@ -67,6 +67,8 @@ namespace ethenfoods.Models
                 dbProduct.SKU = product.SKU;
                 dbProduct.Name = product.Name;
                 dbProduct.Price = product.Price;
+                dbProduct.PerCase = product.PerCase;
+                dbProduct.PerBox = product.PerBox;
                 dbProduct.Quantity = product.Quantity;
                 dbProduct.Description = product.Description;
                 dbProduct.Image = product.Image;

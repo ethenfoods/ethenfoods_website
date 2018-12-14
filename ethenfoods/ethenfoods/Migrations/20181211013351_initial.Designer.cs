@@ -10,7 +10,7 @@ using ethenfoods.Data;
 namespace ethenfoods.Migrations
 {
     [DbContext(typeof(EthenFoodsDbContext))]
-    [Migration("20181208070837_initial")]
+    [Migration("20181211013351_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -98,7 +98,11 @@ namespace ethenfoods.Migrations
 
                     b.Property<string>("Image");
 
-                    b.Property<int>("Name");
+                    b.Property<string>("Name");
+
+                    b.Property<int>("PerBox");
+
+                    b.Property<int>("PerCase");
 
                     b.Property<float>("Price");
 

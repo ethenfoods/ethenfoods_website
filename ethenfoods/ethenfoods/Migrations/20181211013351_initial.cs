@@ -62,12 +62,14 @@ namespace ethenfoods.Migrations
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     SKU = table.Column<string>(nullable: true),
-                    Name = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
                     Price = table.Column<float>(nullable: false),
                     Quantity = table.Column<int>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     Image = table.Column<string>(nullable: true),
-                    ProductCategory = table.Column<int>(nullable: false)
+                    ProductCategory = table.Column<int>(nullable: false),
+                    PerCase = table.Column<int>(nullable: false),
+                    PerBox = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

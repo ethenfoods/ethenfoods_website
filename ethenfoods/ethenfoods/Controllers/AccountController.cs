@@ -78,10 +78,7 @@ namespace ethenfoods.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel rvm)
         {
-            //if (rvm.ZipCode == null)
-            //{
-            //    rvm.ZipCode = 0;
-            //}
+
             if (ModelState.IsValid)
             {
                 ApplicationUser user = new ApplicationUser

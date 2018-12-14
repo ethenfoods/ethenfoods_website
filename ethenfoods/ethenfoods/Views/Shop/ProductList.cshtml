@@ -1,0 +1,19 @@
+﻿@model ProductListViewModel
+@{
+    ViewData["Title"] = "ProductList";
+    Layout = "_Layout";
+}
+
+<h2>All Products</h2>
+
+@foreach (Product product in Model.Products)
+{
+    <div>
+        <img src=@product.Image />
+        <div>
+            <h4>@product.Name</h4>
+            <a asp-controller="Shop" asp-action="ProductDetail" asp-route-Id="@product.ID">View Detail</a>
+        </div>
+    </div>
+
+}

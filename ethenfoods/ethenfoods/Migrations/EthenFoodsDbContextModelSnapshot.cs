@@ -98,6 +98,10 @@ namespace ethenfoods.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<int>("PerBox");
+
+                    b.Property<int>("PerCase");
+
                     b.Property<float>("Price");
 
                     b.Property<int>("ProductCategory");
