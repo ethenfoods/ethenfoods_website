@@ -10,6 +10,7 @@ namespace ethenfoods.Models.Interfaces
         Task<BasketItem> CreateItem(BasketItem basketItem);
         Task<BasketItem> UpdateItem(BasketItem basketItem);
         BasketItem GetItemById(int id);
+        BasketItem GetItemByProductId(int basketId, int productId);
         List<BasketItem> GetItemByBasketId(int basketId);
     }
 }

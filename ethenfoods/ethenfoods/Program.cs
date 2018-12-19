@@ -25,7 +25,7 @@ namespace ethenfoods
 
                 try
                 {
-                    //RoleInitializer.SeedData(services, userManager);
+                    //roleinitializer.seeddata(services, usermanager);
                 }
 
                 catch (Exception ex)

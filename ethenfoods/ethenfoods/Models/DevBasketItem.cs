@@ -37,9 +37,17 @@ namespace ethenfoods.Models
             return basketItem;
         }
 
+        public BasketItem GetItemByProductId(int basketId, int productId)
+        {
+            var basketItem = _context.BasketItems
+                                     .Where(item => item.BasketId == basketId)
+                                     .FirstOrDefault(item => item.ProductId == productId);
+            return basketItem;
+        }
+
         public List<BasketItem> GetItemByBasketId(int basketId)
         {
-            var basketItems = _context.BasketItems.Where(i => i.BasketID == basketId).ToList();
+            var basketItems = _context.BasketItems.Where(i => i.BasketId == basketId).ToList();
             return basketItems;
         }
     }

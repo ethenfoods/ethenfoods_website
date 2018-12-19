@@ -16,4 +16,5 @@
 <p>@Model.Price</p>
 <p>@Model.Description</p>
 
+<a asp-controller="Shop" asp-action="AddToCart" asp-route-id="@Model.ID"> Add To Cart </a>
 <a asp-controller="Shop" asp-action="ProductList"> Back to List </a>

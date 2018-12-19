@@ -14,19 +14,16 @@ namespace ethenfoods.Controllers
 {
     public class ShopController : Controller
     {
-        private IConfiguration _configuration;
         private UserManager<ApplicationUser> _userManager;
         private IProduct _product;
         private IBasket _basket;
         private IBasketItem _basketItems;
 
-        public ShopController(IConfiguration Configuration, 
-                              UserManager<ApplicationUser> userManager, 
+        public ShopController(UserManager<ApplicationUser> userManager, 
                               IProduct product, 
                               IBasket basket, 
                               IBasketItem basketItems)
         {
-            _configuration = Configuration;
             _userManager = userManager;
             _product = product;
             _basket = basket;
@@ -79,9 +76,41 @@ namespace ethenfoods.Controllers
                     item.Product = product;
                 }
             }
-            basket.BasketItems = basketItems;
 
-            return View(basket);
+            ShoppingCartViewModel scvm = new ShoppingCartViewModel();
+            scvm.Basket = basket;
+            scvm.BasketItems = basketItems;
+
+            return View(scvm);
+        }
+
+        public async Task<IActionResult> AddToCart(int id)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var basket = _basket.GetByUserId(user.Id);
+
+            if ( _basketItems.GetItemByProductId(basket.ID, id) == null)
+            {
+                var selectedProduct = _product.GetById(id);
+                BasketItem basketItem = new BasketItem
+                {
+                    BasketId = basket.ID,
+                    ProductId = id,
+                    Product = await selectedProduct,
+                    Quantity = 1
+                };
+
+                await _basketItems.CreateItem(basketItem);
+            }
+
+            else
+            {
+                var basketItem = _basketItems.GetItemByProductId(basket.ID, id);
+                basketItem.Quantity += 1;
+                await _basketItems.UpdateItem(basketItem);
+            }
+
+            return RedirectToAction("ProductList");
         }
     }
 }

@@ -1,0 +1,15 @@
+﻿@model ShoppingCartViewModel
+@{
+    ViewData["Title"] = "ShoppingCart";
+}
+
+<h2>ShoppingCart</h2>
+
+<div>
+@foreach(BasketItem item in Model.BasketItems)
+{
+    <h3>Name: @item.Product.Name </h3>
+    <p>Quantity: @item.Quantity</p>
+
+}
+</div>
