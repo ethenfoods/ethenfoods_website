@@ -86,6 +86,42 @@ namespace ethenfoods.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("ethenfoods.Models.Basket", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("IsComplete");
+
+                    b.Property<DateTime>("OrderDate");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Baskets");
+                });
+
+            modelBuilder.Entity("ethenfoods.Models.BasketItem", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BasketId");
+
+                    b.Property<int>("ProductId");
+
+                    b.Property<int>("Quantity");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("BasketItems");
+                });
+
             modelBuilder.Entity("ethenfoods.Models.Product", b =>
                 {
                     b.Property<int>("ID")
@@ -98,7 +134,11 @@ namespace ethenfoods.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<float>("Price");
+                    b.Property<int>("PerBox");
+
+                    b.Property<int>("PerCase");
+
+                    b.Property<decimal>("Price");
 
                     b.Property<int>("ProductCategory");
 
@@ -109,6 +149,10 @@ namespace ethenfoods.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new { ID = 1, Description = "Yogert Flavored Syrup", Image = "http://ethenfood.com/wp-content/uploads/2016/05/%E5%84%AA%E9%85%AA%E4%B9%B31.jpg", Name = "Yogert Extra Syrup", PerBox = 6, PerCase = 6, Price = 15.00m, ProductCategory = 8, Quantity = 100, SKU = "test001" }
+                    );
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -219,6 +263,14 @@ namespace ethenfoods.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("ethenfoods.Models.BasketItem", b =>
+                {
+                    b.HasOne("ethenfoods.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

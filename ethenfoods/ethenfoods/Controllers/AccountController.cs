@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ethenfoods.Models;
 using ethenfoods.Models.ViewModel;
+using ethenfoods.Models.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -16,11 +17,13 @@ namespace ethenfoods.Controllers
 
         private UserManager<ApplicationUser> _userManager;
         private SignInManager<ApplicationUser> _signinManager;
+        private IBasket _basket;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signinManager)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signinManager, IBasket basket)
         {
             _userManager = userManager;
             _signinManager = signinManager;
+            _basket = basket;
         }
 
         [HttpGet]
@@ -78,10 +81,7 @@ namespace ethenfoods.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel rvm)
         {
-            //if (rvm.ZipCode == null)
-            //{
-            //    rvm.ZipCode = 0;
-            //}
+
             if (ModelState.IsValid)
             {
                 ApplicationUser user = new ApplicationUser
@@ -102,6 +102,11 @@ namespace ethenfoods.Controllers
                 if (result.Succeeded)
                 {
                     await _signinManager.SignInAsync(user, false);
+
+                    Basket newBasket = new Basket();
+                    newBasket.UserId = user.Id;
+                    await _basket.CreateBasket(newBasket);
+
                     return RedirectToAction("Index", "Home");
                 }
 

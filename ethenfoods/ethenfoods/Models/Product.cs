@@ -11,8 +11,8 @@ namespace ethenfoods.Models
         public int ID { get; set; }
         public string SKU { get; set; }
         public string Name { get; set; }
-        public float Price { get; set; }
-        public int Quantity { get; set; }
+        public decimal Price { get; set; }
+        public int Quantity { get; set; } = 0;
         public string Description { get; set; }
 
         [Display(Name = "Image")]
@@ -20,6 +20,12 @@ namespace ethenfoods.Models
 
         [Display(Name = "Category")]
         public Category ProductCategory { get; set; }
+
+        [Display(Name = "Bags/Bottles per Case")]
+        public int PerCase { get; set; } = 0;
+
+        [Display(Name = "Size per Box")]
+        public int PerBox { get; set; } = 0;
     }
 
     public enum Category

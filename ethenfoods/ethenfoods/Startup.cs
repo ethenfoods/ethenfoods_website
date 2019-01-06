@@ -73,6 +73,8 @@ namespace ethenfoods
 
             // Connecting Interfaces to Database
             services.AddScoped<IProduct, DevProduct>();
+            services.AddTransient<IBasket, DevBasket>();
+            services.AddTransient<IBasketItem, DevBasketItem>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

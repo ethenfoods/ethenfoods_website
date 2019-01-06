@@ -1,0 +1,20 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "ProductDetail";
+    Layout = "_Layout";
+}
+
+<h2>@Model.Name</h2>
+<p>@Model.SKU</p>
+<p>@Model.ProductCategory</p>
+
+<img src=@Model.Image alt=@Model.Name/>
+
+<p>@Model.PerCase / Case</p>
+<p>@Model.PerBox / Box, Bottle</p>
+
+<p>@Model.Price</p>
+<p>@Model.Description</p>
+
+<a asp-controller="Shop" asp-action="AddToCart" asp-route-id="@Model.ID"> Add To Cart </a>
+<a asp-controller="Shop" asp-action="ProductList"> Back to List </a>
