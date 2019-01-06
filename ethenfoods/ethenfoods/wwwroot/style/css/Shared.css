@@ -1,0 +1,88 @@
+﻿nav {
+    position: relative;
+    background-color: yellow;
+    width: 100%;
+}
+
+ul {
+    outline: black 1px solid;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    outline: red 1px solid;
+    margin: 0;
+    padding: 0;
+
+}
+
+.logo {
+    width: 120px;
+    height: auto;
+}
+
+.hamburger {
+    width: 50px;
+    float: right;
+    height: auto;
+}
+
+/*Desktop View*/
+@media screen and (min-width: 640.1px) {
+    .hamburger {
+        display: none;
+    }
+
+    nav {
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
+
+    ul {
+        margin: 0 0 0 14%;
+    }
+
+    li {
+        display: inline-block;
+        margin: 0;
+        padding: 0 2%;
+    }
+
+    li > a {
+        font-size: 3vw;
+        text-decoration: none;
+    }
+}
+
+/*Mobile View*/
+@media screen and (max-width: 640px) {
+    .hamburger {
+        display: block;
+        float: right;
+    }
+
+    nav {
+        /*display: none;*/
+    }
+
+    li {
+        display: block;
+        width: 100%;
+    }
+
+    li > a {
+        font-size: 3vw;
+        padding: 2% 50%;
+    }
+
+    li:hover {
+        background-color: lime;
+    }
+
+}
+
+footer {
+    background-color: dimgray;
+}
